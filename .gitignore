@@ -1,0 +1,12 @@
+node_modules/
+release/
+dist/
+out/
+*.log
+.DS_Store
+database.db-journal
+database.db-wal
+database.db-shm
+.vscode/
+.idea/
+.env

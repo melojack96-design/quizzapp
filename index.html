@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' http://127.0.0.1:* https://*.firebaseapp.com https://*.googleapis.com https://apis.google.com https://accounts.google.com https://www.gstatic.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com; img-src 'self' data: https: blob: http://127.0.0.1:*; media-src 'self' data: blob: http://127.0.0.1:*; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com http://127.0.0.1:*; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://www.gstatic.com https://apis.google.com https://accounts.google.com http://127.0.0.1:*; connect-src 'self' http://127.0.0.1:* https://*.firebaseapp.com https://*.googleapis.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com wss://*.firebaseio.com https://*.firebaseio.com; frame-src 'self' https://*.firebaseapp.com https://accounts.google.com https://www.facebook.com;"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GameZone Pro</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="bg-orbs" aria-hidden="true">
+      <span class="orb orb-1"></span>
+      <span class="orb orb-2"></span>
+      <span class="orb orb-3"></span>
+      <span class="orb orb-4"></span>
+    </div>
+
+    <!-- PARTICLE CANVAS -->
+    <canvas id="particles-canvas" class="particles-canvas"></canvas>
+
+    <!-- TOAST CONTAINER -->
+    <div id="toast-container"></div>
+
+    <!-- NOTIFICATION CONTAINER -->
+    <div id="notification-container"></div>
+
+    <!-- SPLASH SCREEN -->
+    <div id="splash-screen" class="splash-screen">
+      <div class="splash-content">
+        <img src="assets/logo.png" alt="GameZone Pro logo" class="splash-logo" />
+        <h1 class="splash-title">GameZone Pro</h1>
+        <p class="splash-tagline">Your Ultimate Gaming Platform</p>
+        <div class="splash-loader">
+          <div class="loader-bar"><div class="loader-fill" id="splash-fill"></div></div>
+          <span class="loader-text" id="splash-text">Loading&hellip;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- AUTH SCREEN -->
+    <div id="auth-screen" class="auth-screen hidden">
+      <div class="auth-card glass">
+        <div id="offline-banner" class="offline-banner hidden">
+          <span>&#128225;</span>
+          <span id="offline-banner-text">You are offline &mdash; limited features available</span>
+        </div>
+        <div class="auth-brand">
+          <img src="assets/logo.png" alt="logo" class="auth-logo" />
+          <h1 class="auth-title">GameZone Pro</h1>
+          <p class="auth-subtitle" id="auth-subtitle">Sign in to continue</p>
+        </div>
+        <div class="auth-tabs" id="auth-tabs">
+          <button class="auth-tab active" data-tab="login" id="tab-login">Login</button>
+          <button class="auth-tab" data-tab="register" id="tab-register">Create Account</button>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <div id="form-login" class="auth-form active">
+          <div class="field-group">
+            <label class="field-label">Email</label>
+            <input type="email" id="login-email" class="field-input glass-subtle" placeholder="you@example.com" autocomplete="email" />
+          </div>
+          <div class="field-group">
+            <label class="field-label">Password</label>
+            <div class="password-wrap">
+              <input type="password" id="login-password" class="field-input glass-subtle" placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;" autocomplete="current-password" />
+              <button class="pwd-toggle" data-target="login-password" tabindex="-1">&#128065;</button>
+            </div>
+          </div>
+          <div class="remember-row">
+            <label class="check-label">
+              <input type="checkbox" id="remember-me" />
+              <span class="check-custom"></span>
+              Remember me
+            </label>
+            <button class="link-btn" id="forgot-btn">Forgot password?</button>
+          </div>
+          <div id="login-error" class="auth-error hidden"></div>
+          <button id="login-btn" class="btn btn-primary glow auth-submit">
+            <span class="btn-label">Sign In</span>
+            <span class="btn-spinner hidden">&#9203;</span>
+          </button>
+        </div>
+
+        <!-- REGISTER FORM -->
+        <div id="form-register" class="auth-form">
+          <div class="field-group">
+            <label class="field-label">Display Name</label>
+            <input type="text" id="reg-name" class="field-input glass-subtle" placeholder="Your name" autocomplete="name" />
+          </div>
+          <div class="field-group">
+            <label class="field-label">Email</label>
+            <input type="email" id="reg-email" class="field-input glass-subtle" placeholder="you@example.com" autocomplete="email" />
+          </div>
+          <div class="field-group">
+            <label class="field-label">Password</label>
+            <div class="password-wrap">
+              <input type="password" id="reg-password" class="field-input glass-subtle" placeholder="Min 6 characters" autocomplete="new-password" />
+              <button class="pwd-toggle" data-target="reg-password" tabindex="-1">&#128065;</button>
+            </div>
+          </div>
+          <div class="field-group">
+            <label class="field-label">Confirm Password</label>
+            <div class="password-wrap">
+              <input type="password" id="reg-confirm" class="field-input glass-subtle" placeholder="Repeat password" autocomplete="new-password" />
+              <button class="pwd-toggle" data-target="reg-confirm" tabindex="-1">&#128065;</button>
+            </div>
+          </div>
+          <div id="reg-error" class="auth-error hidden"></div>
+          <button id="reg-btn" class="btn btn-primary glow auth-submit">
+            <span class="btn-label">Create Account</span>
+            <span class="btn-spinner hidden">&#9203;</span>
+          </button>
+        </div>
+
+        <!-- SOCIAL -->
+        <div class="social-divider"><span>or continue with</span></div>
+        <div class="social-btns">
+          <button id="google-btn" class="btn-social glass-subtle">
+            <svg class="social-icon" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.35-8.16 2.35-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/><path fill="none" d="M0 0h48v48H0z"/></svg>
+            Google
+          </button>
+          <button id="facebook-btn" class="btn-social glass-subtle">
+            <svg class="social-icon" viewBox="0 0 24 24"><path fill="#1877F2" d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.413c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.49 0-1.955.928-1.955 1.881v2.288h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+            Facebook
+          </button>
+        </div>
+        <div class="offline-section">
+          <button id="offline-play-btn" class="btn-offline glass-subtle">&#127918; Play Offline (Guest)</button>
+          <p class="offline-note">No account needed &mdash; progress won't be saved to cloud</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- APP SCREEN -->
+    <div id="app-screen" class="hidden">
+      <!-- MOBILE HAMBURGER -->
+      <button id="hamburger-btn" class="hamburger-btn" aria-label="Toggle menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
+      <!-- SIDEBAR OVERLAY -->
+      <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+      <!-- SIDEBAR -->
+      <aside id="sidebar" class="sidebar glass">
+        <div class="sidebar-header">
+          <img src="assets/logo.png" alt="Logo" class="sidebar-logo" />
+          <h2 class="sidebar-title">GameZone Pro</h2>
+          <button id="sidebar-close" class="sidebar-close">&times;</button>
+        </div>
+        <nav class="sidebar-nav">
+          <button class="nav-item active" data-nav="home"><span class="nav-icon">&#127968;</span><span class="nav-text" data-i18n="home">Home</span></button>
+          <button class="nav-item" data-nav="shop"><span class="nav-icon">&#128722;</span><span class="nav-text" data-i18n="shop">Shop</span></button>
+          <button class="nav-item" data-nav="rewards"><span class="nav-icon">&#127873;</span><span class="nav-text" data-i18n="rewards">Rewards</span></button>
+          <button class="nav-item" data-nav="leaderboard"><span class="nav-icon">&#127942;</span><span class="nav-text" data-i18n="leaderboard">Leaderboard</span></button>
+          <button class="nav-item" data-nav="achievements"><span class="nav-icon">&#127941;</span><span class="nav-text" data-i18n="achievements">Achievements</span></button>
+        </nav>
+        <div class="sidebar-footer">
+          <div class="sidebar-stats glass-subtle">
+            <div class="stat-row"><span>&#9734; Level</span><strong id="sidebar-level">0</strong></div>
+            <div class="stat-row"><span>&#128176; Coins</span><strong id="sidebar-coins">0</strong></div>
+            <div class="stat-row"><span>&#9889; XP</span><strong id="sidebar-xp">0</strong></div>
+            <div class="stat-row"><span>&#128293; Streak</span><strong id="sidebar-streak">0</strong></div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <div class="app-content">
+        <header class="app-header glass">
+          <div class="brand">
+            <img src="assets/logo.png" alt="GameZone Pro" class="logo" />
+            <div class="brand-text">
+              <h1 data-i18n="appTitle">GameZone Pro</h1>
+              <p class="tagline" data-i18n="tagline">Your Ultimate Gaming Platform</p>
+            </div>
+          </div>
+          <div class="header-actions">
+            <div class="stage-chip glass-subtle" id="stage-chip">
+              <span class="chip-label" data-i18n="stage">Stage</span>
+              <strong id="stage-number">1</strong>
+              <span class="chip-sep">/</span>
+              <span id="stage-max">100</span>
+              <span class="chip-divider">|</span>
+              <span id="stage-question-count">10</span>
+              <span class="chip-label-sm" data-i18n="questions">Questions</span>
+            </div>
+            <div class="health-chip glass-subtle" id="health-chip" title="Health">
+              <span data-i18n="health">Health</span>
+              <strong id="health-hearts">&#10084; &#10084; &#10084;</strong>
+              <small id="heart-timer" class="heart-timer hidden"></small>
+            </div>
+            <div class="player-stats glass-subtle" id="player-stats" title="XP, Level, Coins">
+              <div class="level-bar-row">
+                <span class="level-text">Level <strong id="nav-level">0</strong></span>
+                <span class="xp-text"><strong id="nav-xp">0/200</strong> XP</span>
+              </div>
+              <div class="level-progress-track" aria-label="Level progress">
+                <div class="level-progress-fill" id="nav-xp-fill"></div>
+              </div>
+              <span class="coin-pill"><img src="assets/coin.png" alt="Coin" class="coin-icon" /> <strong id="nav-coins">0</strong></span>
+            </div>
+            <div class="conn-indicator glass-subtle" id="conn-indicator" title="Connection status">
+              <span id="conn-dot" class="conn-dot online"></span>
+              <span id="conn-label">Online</span>
+            </div>
+            <button id="lang-toggle" class="lang-toggle glass-subtle" aria-label="Toggle language">
+              <span class="lang-flag" id="lang-flag">EN</span>
+              <span class="lang-text" id="lang-text">English</span>
+            </button>
+            <div class="user-menu-wrap" id="user-menu-wrap">
+              <button class="settings-icon-btn glass-subtle" id="settings-icon-btn" aria-label="Settings">&#9881;</button>
+              <button class="user-avatar-btn glass-subtle" id="user-avatar-btn" aria-label="Profile">
+                <span id="user-initials">?</span>
+              </button>
+              <span class="header-username" id="header-username"></span>
+              <div class="user-dropdown glass" id="user-dropdown">
+                <div class="dropdown-profile">
+                  <img id="profile-photo" class="dropdown-photo hidden" src="" alt="Profile" referrerpolicy="no-referrer" />
+                  <div class="dropdown-info">
+                    <p class="dropdown-name" id="dropdown-name">Guest</p>
+                    <p class="dropdown-email" id="dropdown-email"></p>
+                  </div>
+                </div>
+                <hr class="dropdown-sep" />
+                <p class="settings-title">&#9881; Settings</p>
+                <button class="dropdown-item" id="volume-toggle">&#128266; Sound: ON</button>
+                <div class="health-store profile-store">
+                  <div class="store-head">
+                    <div>
+                      <strong>&#10084;&#65039; Heart Store</strong>
+                      <small>Buy hearts with coins</small>
+                    </div>
+                    <span class="discount-badge">-20%</span>
+                  </div>
+                  <button class="store-buy-btn" onclick="buyHearts(1)"><span>+1 &#10084;&#65039;</span><strong>240 coins</strong></button>
+                  <button class="store-buy-btn" onclick="buyHearts(2)"><span>+2 &#10084;&#65039;</span><strong>800 coins</strong></button>
+                  <button class="store-buy-btn" onclick="buyHearts(3)"><span>+3 &#10084;&#65039;</span><strong>1920 coins</strong></button>
+                  <p id="store-message" class="store-message"></p>
+                </div>
+                <button class="dropdown-item" id="logout-btn">&#128682; Sign Out</button>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <main class="app-main">
+          <!-- HOME / START SCREEN -->
+          <section id="start-screen" class="screen glass card visible">
+            <div class="start-content">
+              <img src="assets/logo.png" alt="" class="start-logo" />
+              <h2 data-i18n="welcome">Welcome to GameZone Pro</h2>
+              <p class="subtitle" data-i18n="welcomeSubtitle">12+ Games &middot; Rewards &middot; Leaderboards &middot; Daily Challenges</p>
+              <div class="daily-reward-banner glass-subtle" id="daily-reward-banner">
+                <span class="reward-icon">&#127873;</span>
+                <div class="reward-info">
+                  <strong>Daily Reward Available!</strong>
+                  <small>Claim your daily bonus</small>
+                </div>
+                <button class="btn btn-sm btn-accent" id="claim-daily-btn">Claim</button>
+              </div>
+              <div class="game-menu">
+                <button id="play-btn" class="game-card-btn glass-subtle">
+                  <span class="game-icon">&#10067;</span>
+                  <strong data-i18n="quizGame">Quiz Game</strong>
+                  <small data-i18n="quizGameDesc">Play the original 100-stage quiz</small>
+                  <span class="game-badge">100 Stages</span>
+                </button>
+                <button id="tictactoe-menu-btn" class="game-card-btn glass-subtle">
+                  <span class="game-icon">&#11093;</span>
+                  <strong data-i18n="tictactoeGame">Tic Tac Toe</strong>
+                  <small data-i18n="tictactoeGameDesc">Play vs AI or a friend</small>
+                  <span class="game-badge">AI</span>
+                </button>
+                <button id="puzzle-menu-btn" class="game-card-btn glass-subtle">
+                  <span class="game-icon">&#129513;</span>
+                  <strong data-i18n="puzzleGame">Puzzle Game</strong>
+                  <small data-i18n="puzzleGameDesc">Slide tiles into the correct order</small>
+                  <span class="game-badge">Brain</span>
+                </button>
+                <button id="snake-menu-btn" class="game-card-btn glass-subtle">
+                  <span class="game-icon">&#128013;</span>
+                  <strong data-i18n="snakeGame">Snake Game</strong>
+                  <small data-i18n="snakeGameDesc">Eat food, level up, and change skin</small>
+                  <span class="game-badge">Arcade</span>
+                </button>
+                <button id="matching-menu-btn" class="game-card-btn glass-subtle">
+                  <span class="game-icon">&#128444;&#65039;</span>
+                  <strong data-i18n="matchingGame">Memory Game</strong>
+                  <small data-i18n="matchingGameDesc">Find all matching picture pairs</small>
+                  <span class="game-badge">Memory</span>
+                </button>
+                <button id="riddles-menu-btn" class="game-card-btn glass-subtle">
+                  <span class="game-icon">&#129504;</span>
+                  <strong data-i18n="riddlesGame">Riddles</strong>
+                  <small data-i18n="riddlesGameDesc">Answer riddles with A B C D</small>
+                  <span class="game-badge">9950+</span>
+                </button>
+                <button id="flappy-menu-btn" class="game-card-btn glass-subtle">
+                  <span class="game-icon">&#128038;</span>
+                  <strong data-i18n="flappyGame">Flappy Bird</strong>
+                  <small data-i18n="flappyGameDesc">Fly through the pipes!</small>
+                  <span class="game-badge new-badge">NEW</span>
+                </button>
+                <button id="math-menu-btn" class="game-card-btn glass-subtle">
+                  <span class="game-icon">&#128290;</span>
+                  <strong data-i18n="mathGame">Math Challenge</strong>
+                  <small data-i18n="mathGameDesc">Solve math problems fast</small>
+                  <span class="game-badge new-badge">NEW</span>
+                </button>
+                <button id="runner-menu-btn" class="game-card-btn glass-subtle">
+                  <span class="game-icon">&#127939;</span>
+                  <strong data-i18n="runnerGame">Platform Runner</strong>
+                  <small data-i18n="runnerGameDesc">Jump, run, and collect coins</small>
+                  <span class="game-badge new-badge">NEW</span>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- QUIZ SCREEN -->
+          <section id="quiz-screen" class="screen glass card">
+            <div class="quiz-topbar">
+              <button id="quiz-back-btn" class="btn btn-ghost" data-i18n="back">Back</button>
+              <div class="quiz-progress-wrap">
+                <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+                <span class="progress-text" id="progress-text">0 / 10</span>
+              </div>
+              <div class="quiz-timer glass-subtle" id="quiz-timer">
+                <span data-i18n="time">Time</span>: <strong id="quiz-time-left">30</strong>s
+              </div>
+            </div>
+            <div class="question-block" id="question-block">
+              <p class="question-counter"><span data-i18n="question">Question</span> <strong id="question-number">1</strong> / <span id="question-total">10</span></p>
+              <h3 class="question-text" id="question-text">&hellip;</h3>
+            </div>
+            <div class="answers" id="answers">
+              <button class="answer-btn glass-subtle" data-letter="A"><span class="answer-letter">A</span><span class="answer-text">&mdash;</span></button>
+              <button class="answer-btn glass-subtle" data-letter="B"><span class="answer-letter">B</span><span class="answer-text">&mdash;</span></button>
+              <button class="answer-btn glass-subtle" data-letter="C"><span class="answer-letter">C</span><span class="answer-text">&mdash;</span></button>
+              <button class="answer-btn glass-subtle" data-letter="D"><span class="answer-letter">D</span><span class="answer-text">&mdash;</span></button>
+            </div>
+            <div class="feedback" id="feedback"></div>
+            <div class="quiz-actions">
+              <button id="next-btn" class="btn btn-primary glow hidden" data-i18n="next">Next</button>
+              <button id="try-again-btn" class="btn btn-warning hidden" data-i18n="tryAgain">Try Again</button>
+              <button id="restart-btn" class="btn btn-ghost hidden" data-i18n="restart">Restart</button>
+            </div>
+          </section>
+
+          <!-- STAGE COMPLETE -->
+          <section id="stage-complete-screen" class="screen glass card">
+            <div class="complete-content">
+              <div class="complete-icon">&#127942;</div>
+              <h2 id="stage-complete-title" data-i18n="stageComplete">Stage Complete!</h2>
+              <p id="stage-complete-msg" data-i18n="stageCompleteMsg">You completed all questions in this stage.</p>
+              <p class="complete-stage">Stage <strong id="completed-stage-num">1</strong></p>
+              <button id="next-stage-btn" class="btn btn-primary glow" data-i18n="nextStage">Next Stage</button>
+            </div>
+          </section>
+
+          <!-- FINISH SCREEN -->
+          <section id="finish-screen" class="screen glass card">
+            <div class="finish-content">
+              <div class="finish-icon">&#127881;</div>
+              <h2 data-i18n="congrats">Congratulations!</h2>
+              <p data-i18n="congratsSubtitle">You're a true Quiz master.</p>
+              <button id="play-again-btn" class="btn btn-primary glow" data-i18n="playAgain">Play again</button>
+            </div>
+          </section>
+
+          <!-- TIC TAC TOE -->
+          <section id="tictactoe-screen" class="screen glass card">
+            <div class="game-header">
+              <button id="ttt-home-btn" class="btn btn-ghost" data-i18n="home">Home</button>
+              <h3 data-i18n="tictactoeGame">Tic Tac Toe</h3>
+              <div class="ttt-controls">
+                <button id="ttt-pvp-btn" class="btn btn-sm glass-subtle" data-i18n="oneVsOne">1 vs 1</button>
+                <button id="ttt-bot-btn" class="btn btn-sm glass-subtle" data-i18n="oneVsBot">1 vs Bot</button>
+                <button id="ttt-reset-btn" class="btn btn-sm glass-subtle" data-i18n="resetGame">Reset</button>
+              </div>
+            </div>
+            <p class="game-status" id="ttt-status" data-i18n="chooseMode">Choose a mode</p>
+            <span class="game-win-icon" id="ttt-win-icon"></span>
+            <p class="game-score" id="ttt-score"></p>
+            <p class="game-round" id="ttt-round"></p>
+            <div class="ttt-board">
+              <button class="ttt-cell" data-index="0"></button>
+              <button class="ttt-cell" data-index="1"></button>
+              <button class="ttt-cell" data-index="2"></button>
+              <button class="ttt-cell" data-index="3"></button>
+              <button class="ttt-cell" data-index="4"></button>
+              <button class="ttt-cell" data-index="5"></button>
+              <button class="ttt-cell" data-index="6"></button>
+              <button class="ttt-cell" data-index="7"></button>
+              <button class="ttt-cell" data-index="8"></button>
+            </div>
+          </section>
+
+          <!-- PUZZLE -->
+          <section id="puzzle-screen" class="screen glass card">
+            <div class="game-header">
+              <button id="puzzle-home-btn" class="btn btn-ghost" data-i18n="home">Home</button>
+              <h3 data-i18n="puzzleGame">Puzzle Game</h3>
+              <button id="puzzle-new-btn" class="btn btn-sm glass-subtle" data-i18n="newPuzzle">New Puzzle</button>
+            </div>
+            <p class="game-status" id="puzzle-status" data-i18n="puzzleReady">Arrange numbers 1 to 8</p>
+            <p class="game-moves"><span data-i18n="moves">Moves</span>: <strong id="puzzle-moves">0</strong></p>
+            <div class="puzzle-board" id="puzzle-board"></div>
+          </section>
+
+          <!-- SNAKE -->
+          <section id="snake-screen" class="screen glass card">
+            <div class="game-header">
+              <button id="snake-home-btn" class="btn btn-ghost" data-i18n="home">Home</button>
+              <h3 data-i18n="snakeGame">Snake Game</h3>
+              <div class="snake-controls-bar">
+                <select id="snake-level" class="game-select glass-subtle">
+                  <option value="easy" data-i18n="easy">Easy</option>
+                  <option value="medium" data-i18n="medium">Medium</option>
+                  <option value="hard" data-i18n="hard">Hard</option>
+                </select>
+                <select id="snake-skin" class="game-select glass-subtle">
+                  <option value="classic" data-i18n="classic">Classic</option>
+                  <option value="fire" data-i18n="fire">Fire</option>
+                  <option value="ice" data-i18n="ice">Ice</option>
+                  <option value="gold" data-i18n="gold">Gold</option>
+                  <option value="neon">Neon</option>
+                  <option value="rainbow">Rainbow</option>
+                </select>
+              </div>
+            </div>
+            <p class="game-status" id="snake-status" data-i18n="snakeReady">Choose a level and press Start</p>
+            <div class="snake-info-bar">
+              <span><span data-i18n="score">Score</span>: <strong id="snake-score">0</strong></span>
+              <span><span data-i18n="level">Level</span>: <strong id="snake-level-label">Easy</strong></span>
+              <span><span data-i18n="skin">Skin</span>: <strong id="snake-skin-label">Classic</strong></span>
+            </div>
+            <canvas id="snake-canvas" class="snake-canvas" width="420" height="420"></canvas>
+            <!-- GAME OVER OVERLAY -->
+            <div id="snake-gameover" class="snake-gameover hidden">
+              <div class="gameover-content glass">
+                <h2>Game Over!</h2>
+                <p class="gameover-msg" id="snake-gameover-msg">You lost! Try again</p>
+                <p class="gameover-score">Score: <strong id="snake-final-score">0</strong></p>
+                <button id="snake-replay-btn" class="btn btn-primary glow">Play Again</button>
+              </div>
+            </div>
+            <div class="snake-action-bar">
+              <button id="snake-start-btn" class="btn btn-primary" data-i18n="start">Start</button>
+              <button id="snake-pause-btn" class="btn btn-ghost" data-i18n="pause">Pause</button>
+            </div>
+            <div class="snake-mobile-controls">
+              <button data-dir="up" class="snake-dir-btn">&#9650;</button>
+              <div class="snake-dir-row">
+                <button data-dir="left" class="snake-dir-btn">&#9664;</button>
+                <button data-dir="down" class="snake-dir-btn">&#9660;</button>
+                <button data-dir="right" class="snake-dir-btn">&#9654;</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- MATCHING / MEMORY -->
+          <section id="matching-screen" class="screen glass card">
+            <div class="game-header">
+              <button id="matching-home-btn" class="btn btn-ghost" data-i18n="home">Home</button>
+              <h3 data-i18n="matchingGame">Memory Game</h3>
+              <div class="matching-controls">
+                <select id="matching-level" class="game-select glass-subtle">
+                  <option value="1">Level 1 (4 pairs)</option>
+                  <option value="2">Level 2 (8 pairs)</option>
+                  <option value="3">Level 3 (10 pairs)</option>
+                </select>
+                <select id="matching-difficulty" class="game-select glass-subtle">
+                  <option value="easy" data-i18n="easy">Easy</option>
+                  <option value="medium" data-i18n="medium">Medium</option>
+                  <option value="hard" data-i18n="hard">Hard</option>
+                </select>
+                <button id="matching-new-btn" class="btn btn-sm glass-subtle" data-i18n="newMatchGame">New Game</button>
+              </div>
+            </div>
+            <p class="game-status" id="matching-status" data-i18n="matchingReady">Flip cards and match pictures</p>
+            <div class="matching-stats">
+              <span><span data-i18n="moves">Moves</span>: <strong id="matching-moves">0</strong></span>
+              <span><span data-i18n="matches">Matches</span>: <strong id="matching-score">0/4</strong></span>
+              <span><span data-i18n="time">Time</span>: <strong id="matching-time">60</strong>s</span>
+              <span><span data-i18n="level">Level</span>: <strong id="matching-level-label">1</strong></span>
+              <span><span data-i18n="difficulty">Difficulty</span>: <strong id="matching-difficulty-label">Easy</strong></span>
+            </div>
+            <div class="matching-board" id="matching-board"></div>
+          </section>
+
+          <!-- RIDDLES -->
+          <section id="riddles-screen" class="screen glass card">
+            <div class="game-header">
+              <button id="riddles-home-btn" class="btn btn-ghost" data-i18n="home">Home</button>
+              <h3 data-i18n="riddlesGame">Riddles</h3>
+              <div class="riddles-controls">
+                <select id="riddles-level" class="game-select glass-subtle"></select>
+                <button id="riddles-restart-btn" class="btn btn-sm glass-subtle" data-i18n="restart">Restart</button>
+              </div>
+            </div>
+            <p class="game-status" id="riddles-status">Choose the correct answer</p>
+            <div class="riddles-stats">
+              <span>&#128220; <strong id="riddles-count">1/10</strong></span>
+              <span>&#9889; <strong id="riddles-score">0</strong> pts</span>
+              <span>&#128293; x<strong id="riddles-combo">0</strong></span>
+              <span>&#9200; <strong id="riddles-time">30</strong>s</span>
+              <span><span data-i18n="level">Level</span>: <strong id="riddles-level-label">1</strong></span>
+            </div>
+            <div class="riddle-block">
+              <p class="riddle-number" id="riddle-number"></p>
+              <h3 class="riddle-question" id="riddle-question"></h3>
+            </div>
+            <div class="riddle-answers">
+              <button class="answer-btn glass-subtle" data-riddle-letter="A"><span class="answer-letter">A</span><span class="answer-text">&mdash;</span></button>
+              <button class="answer-btn glass-subtle" data-riddle-letter="B"><span class="answer-letter">B</span><span class="answer-text">&mdash;</span></button>
+              <button class="answer-btn glass-subtle" data-riddle-letter="C"><span class="answer-letter">C</span><span class="answer-text">&mdash;</span></button>
+              <button class="answer-btn glass-subtle" data-riddle-letter="D"><span class="answer-letter">D</span><span class="answer-text">&mdash;</span></button>
+            </div>
+            <div class="feedback" id="riddles-feedback"></div>
+            <button id="riddles-next-btn" class="btn btn-primary hidden" data-i18n="next">Next</button>
+          </section>
+
+          <!-- FLAPPY BIRD -->
+          <section id="flappy-screen" class="screen glass card">
+            <div class="game-header">
+              <button id="flappy-home-btn" class="btn btn-ghost" data-i18n="home">Home</button>
+              <h3 data-i18n="flappyGame">Flappy Bird</h3>
+            </div>
+            <p class="game-status" id="flappy-status">Click or press Space to fly!</p>
+            <div class="flappy-score-bar">
+              <span>Score: <strong id="flappy-score">0</strong></span>
+              <span>Best: <strong id="flappy-best">0</strong></span>
+            </div>
+            <canvas id="flappy-canvas" class="flappy-canvas" width="400" height="500"></canvas>
+            <div id="flappy-gameover" class="snake-gameover hidden">
+              <div class="gameover-content glass">
+                <h2>Game Over!</h2>
+                <p class="gameover-score">Score: <strong id="flappy-final-score">0</strong></p>
+                <button id="flappy-replay-btn" class="btn btn-primary glow">Play Again</button>
+              </div>
+            </div>
+            <button id="flappy-start-btn" class="btn btn-primary">Start</button>
+          </section>
+
+          <!-- MATH CHALLENGE -->
+          <section id="math-screen" class="screen glass card">
+            <div class="game-header">
+              <button id="math-home-btn" class="btn btn-ghost" data-i18n="home">Home</button>
+              <h3 data-i18n="mathGame">Math Challenge</h3>
+              <select id="math-difficulty" class="game-select glass-subtle">
+                <option value="easy">Easy (+, -)</option>
+                <option value="medium">Medium (+, -, x)</option>
+                <option value="hard">Hard (+, -, x, /)</option>
+              </select>
+            </div>
+            <p class="game-status" id="math-status">Solve as fast as you can!</p>
+            <div class="math-stats">
+              <span>Score: <strong id="math-score">0</strong></span>
+              <span>Streak: <strong id="math-streak">0</strong></span>
+              <span>Time: <strong id="math-time">60</strong>s</span>
+            </div>
+            <div class="math-problem" id="math-problem">
+              <h2 class="math-question" id="math-question">3 + 5 = ?</h2>
+              <div class="math-answers" id="math-answers"></div>
+            </div>
+            <button id="math-start-btn" class="btn btn-primary">Start Challenge</button>
+          </section>
+
+          <!-- PLATFORM RUNNER -->
+          <section id="runner-screen" class="screen glass card">
+            <div class="game-header">
+              <button id="runner-home-btn" class="btn btn-ghost" data-i18n="home">Home</button>
+              <h3 data-i18n="runnerGame">Platform Runner</h3>
+            </div>
+            <p class="game-status" id="runner-status">Press Space or tap to jump!</p>
+            <div class="runner-score-bar">
+              <span>Score: <strong id="runner-score">0</strong></span>
+              <span>Coins: <strong id="runner-coins">0</strong></span>
+              <span>Best: <strong id="runner-best">0</strong></span>
+            </div>
+            <canvas id="runner-canvas" class="runner-canvas" width="700" height="300"></canvas>
+            <div id="runner-gameover" class="snake-gameover hidden">
+              <div class="gameover-content glass">
+                <h2>Game Over!</h2>
+                <p class="gameover-score">Distance: <strong id="runner-final-score">0</strong>m</p>
+                <button id="runner-replay-btn" class="btn btn-primary glow">Play Again</button>
+              </div>
+            </div>
+            <button id="runner-start-btn" class="btn btn-primary">Start Running</button>
+          </section>
+
+          <!-- SHOP -->
+          <section id="shop-screen" class="screen glass card">
+            <div class="game-header">
+              <button id="shop-home-btn" class="btn btn-ghost" data-i18n="home">Home</button>
+              <h3 data-i18n="shop">Shop</h3>
+              <span class="shop-coins"><img src="assets/coin.png" alt="" class="coin-icon" /> <strong id="shop-coin-display">0</strong></span>
+            </div>
+            <div class="shop-tabs">
+              <button class="shop-tab active" data-shop-cat="skins">Skins</button>
+              <button class="shop-tab" data-shop-cat="powerups">Power-ups</button>
+              <button class="shop-tab" data-shop-cat="themes">Themes</button>
+              <button class="shop-tab" data-shop-cat="special">Special</button>
+            </div>
+            <div class="shop-grid" id="shop-grid"></div>
+          </section>
+
+          <!-- REWARDS -->
+          <section id="rewards-screen" class="screen glass card">
+            <div class="game-header">
+              <button id="rewards-home-btn" class="btn btn-ghost" data-i18n="home">Home</button>
+              <h3 data-i18n="rewards">Rewards Center</h3>
+            </div>
+            <div class="rewards-sections">
+              <div class="reward-section glass-subtle">
+                <h4>&#128197; Daily Login Rewards</h4>
+                <div class="daily-rewards-grid" id="daily-rewards-grid"></div>
+              </div>
+              <div class="reward-section glass-subtle">
+                <h4>&#127922; Spin the Wheel</h4>
+                <div class="spin-wheel-container">
+                  <canvas id="spin-wheel-canvas" width="300" height="300"></canvas>
+                  <button id="spin-btn" class="btn btn-primary glow">SPIN!</button>
+                  <p id="spin-result" class="spin-result"></p>
+                </div>
+              </div>
+              <div class="reward-section glass-subtle">
+                <h4>&#128293; Win Streak Bonus</h4>
+                <div class="streak-info" id="streak-info">
+                  <p>Current Streak: <strong id="current-streak">0</strong></p>
+                  <p>Next bonus at streak <strong id="next-streak-bonus">3</strong></p>
+                  <div class="streak-progress"><div class="streak-fill" id="streak-fill"></div></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- LEADERBOARD -->
+          <section id="leaderboard-screen" class="screen glass card">
+            <div class="game-header">
+              <button id="leaderboard-home-btn" class="btn btn-ghost" data-i18n="home">Home</button>
+              <h3 data-i18n="leaderboard">Leaderboard</h3>
+            </div>
+            <div class="leaderboard-tabs">
+              <button class="lb-tab active" data-lb="xp">XP</button>
+              <button class="lb-tab" data-lb="coins">Coins</button>
+              <button class="lb-tab" data-lb="games">Games Won</button>
+            </div>
+            <div class="leaderboard-list" id="leaderboard-list"></div>
+          </section>
+
+          <!-- ACHIEVEMENTS -->
+          <section id="achievements-screen" class="screen glass card">
+            <div class="game-header">
+              <button id="achievements-home-btn" class="btn btn-ghost" data-i18n="home">Home</button>
+              <h3 data-i18n="achievements">Achievements</h3>
+            </div>
+            <div class="achievements-grid" id="achievements-grid"></div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <!-- SOUND EFFECTS -->
+    <audio id="sfx-correct" src="sounds/correct.wav" preload="auto"></audio>
+    <audio id="sfx-wrong" src="sounds/wrong.wav" preload="auto"></audio>
+    <audio id="sfx-win" src="sounds/win.wav" preload="auto"></audio>
+    <audio id="sfx-lose" src="sounds/lose.wav" preload="auto"></audio>
+    <audio id="sfx-tick" src="sounds/tick.wav" preload="auto"></audio>
+    <audio id="sfx-coin" src="sounds/coin.wav" preload="auto"></audio>
+    <audio id="sfx-level-up" src="sounds/level-up.wav" preload="auto"></audio>
+    <audio id="sfx-purchase" src="sounds/purchase.wav" preload="auto"></audio>
+    <audio id="sfx-game-over" src="sounds/game-over.wav" preload="auto"></audio>
+    <audio id="sfx-hover" src="sounds/hover.wav" preload="auto"></audio>
+    <audio id="sfx-click" src="sounds/click.wav" preload="auto"></audio>
+    <audio id="sfx-spin" src="sounds/spin.wav" preload="auto"></audio>
+    <audio id="sfx-achievement" src="sounds/achievement.wav" preload="auto"></audio>
+
+    <!-- SCRIPTS -->
+    <script src="ui.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="database.js"></script>
+    <script src="renderer.js"></script>
+    <script src="games/flappy.js"></script>
+    <script src="games/math-challenge.js"></script>
+    <script src="games/runner.js"></script>
+    <script src="rewards.js"></script>
+    <script src="shop.js"></script>
+    <script src="sound-manager.js"></script>
+    <script src="auth.js"></script>
+  </body>
+</html>
