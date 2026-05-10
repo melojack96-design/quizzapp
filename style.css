@@ -355,7 +355,7 @@ html[dir="rtl"] body { font-family: "Tajawal", "Cairo", "Segoe UI", system-ui, s
 .header-username { font-size: 12px; color: var(--text-dim); max-width: 80px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 .user-dropdown { position: absolute; top: 100%; right: 0; width: 280px; padding: 16px; z-index: 200; display: none; animation: dropdown-in 0.2s ease; }
-.user-dropdown.show { display: block; }
+.user-dropdown.show, .user-dropdown.open { display: block; }
 @keyframes dropdown-in { from { transform: translateY(-8px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 .dropdown-profile { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
 .dropdown-photo { width: 40px; height: 40px; border-radius: 50%; }
@@ -779,9 +779,15 @@ html[dir="rtl"] body { font-family: "Tajawal", "Cairo", "Segoe UI", system-ui, s
 /* ── RTL Support ── */
 html[dir="rtl"] .sidebar { border-right: none; border-left: 1px solid var(--glass-border); }
 html[dir="rtl"] .hamburger-btn { left: auto; right: 16px; }
-html[dir="rtl"] .sidebar { left: auto; right: 0; transform: translateX(100%); }
-html[dir="rtl"] .sidebar.open { transform: translateX(0); }
-html[dir="rtl"] .app-header { margin-left: 0; margin-right: 60px; }
+html[dir="rtl"] .app-header { margin-right: 0; }
+html[dir="rtl"] .user-dropdown { right: auto; left: 0; }
+html[dir="rtl"] .dropdown-item { text-align: right; }
+
+@media (max-width: 900px) {
+  html[dir="rtl"] .sidebar { left: auto; right: 0; transform: translateX(100%); }
+  html[dir="rtl"] .sidebar.open { transform: translateX(0); }
+  html[dir="rtl"] .app-header { margin-left: 0; margin-right: 60px; }
+}
 html[dir="rtl"] #toast-container { right: auto; left: 20px; }
 html[dir="rtl"] .toast { transform: translateX(-100%); }
 html[dir="rtl"] .toast.show { transform: translateX(0); }
