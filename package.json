@@ -1,0 +1,83 @@
+{
+  "name": "app-quiz",
+  "version": "2.0.0",
+  "description": "Modern glassmorphism desktop quiz app — Splash, Auth, Firebase, Firestore, Offline mode.",
+  "main": "main.js",
+  "author": {
+    "name": "soufiane-ait-belkacem",
+    "email": "ytsoufiane86@gmail.com"
+  },
+  "license": "MIT",
+  "scripts": {
+    "start":        "electron .",
+    "build":        "electron-builder",
+    "seed":         "electron scripts/seed-electron.js",
+    "seed:firebase":"node scripts/seed-firestore.js",
+    "postinstall":  "electron-builder install-app-deps",
+    "pack":         "electron-builder --dir",
+    "dist":         "electron-builder",
+    "dist:win":     "electron-builder --win --x64"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.3.0"
+  },
+  "devDependencies": {
+    "concurrently":   "^9.2.1",
+    "electron":       "^31.3.1",
+    "electron-builder":"^25.1.8",
+    "firebase-admin": "^12.0.0",
+    "wait-on":        "^9.0.5"
+  },
+  "build": {
+    "appId":       "com.app.quizapp",
+    "productName": "App Quiz",
+    "asar":        true,
+    "asarUnpack": [
+      "database.db",
+      "sounds/**/*",
+      "assets/**/*"
+    ],
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer.js",
+      "auth.js",
+      "firebase-config.js",
+      "database.js",
+      "ui.js",
+      "index.html",
+      "style.css",
+      "database.db",
+      "assets/**/*",
+      "sounds/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "assets",
+      "output":         "release"
+    },
+    "win": {
+      "target": [{ "target": "nsis", "arch": ["x64"] }],
+      "icon": "assets/logo.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "App Quiz"
+    },
+    "linux": {
+      "target": ["AppImage"],
+      "icon": "assets/logo.png",
+      "category": "Education"
+    },
+    "mac": {
+      "target": ["dmg"],
+      "icon": "assets/logo.png",
+      "category": "public.app-category.education"
+    }
+  }
+}
