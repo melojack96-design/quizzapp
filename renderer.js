@@ -7,7 +7,7 @@
 
 const i18n = {
   en: {
-    appTitle: "App Quiz", tagline: "Level up your knowledge",
+    appTitle: "GameZone Pro", tagline: "Your Ultimate Gaming Platform",
     stage: "Stage", questions: "Questions", health: "Health", home: "Home", back: "Back", time: "Time", timeUp: "Time up!",
     quizGame: "Quiz Game", quizGameDesc: "Play the original 100-stage quiz",
     tictactoeGame: "X and O Tic Tac Toe", tictactoeGameDesc: "Play 1 vs 1 or 1 vs Bot",
@@ -19,8 +19,8 @@ const i18n = {
     chooseMode: "Choose a mode to start.", turn: "Turn", botThinking: "Bot is thinking...", draw: "Draw!", wins: "wins!",
     player1: "User 1", player2: "User 2", bot: "Bot", result: "Result", round: "Round", newMatch: "New Match",
     puzzleReady: "Arrange numbers from 1 to 8.", puzzleSolved: "Puzzle solved!", healthEmpty: "No health left! Stage restarted.",
-    welcome: "Welcome to App Quiz",
-    welcomeSubtitle: "100 stages \u00B7 English & Arabic \u00B7 Test your knowledge",
+    welcome: "Welcome to GameZone Pro",
+    welcomeSubtitle: "12+ Games \u00B7 Rewards \u00B7 Leaderboards \u00B7 Daily Challenges",
     feature1: "Glassmorphism UI", feature2: "Multiple questions per stage",
     feature3: "Instant feedback with sound", play: "Play", progress: "Progress",
     question: "Question", next: "Next", tryAgain: "Try Again", restart: "Restart",
@@ -28,43 +28,153 @@ const i18n = {
     stageComplete: "Stage Complete!", stageCompleteMsg: "You completed all questions in this stage.",
     nextStage: "Next Stage",
     congrats: "You beat all 100 stages!", congratsSubtitle: "You're a true Quiz master.",
-    playAgain: "Play again", noQuestion: "No question available for this stage."
+    playAgain: "Play again", noQuestion: "No question available for this stage.",
+    // Sidebar & navigation
+    shop: "Shop", rewards: "Rewards", leaderboard: "Leaderboard", achievements: "Achievements",
+    // Flappy Bird
+    flappyGame: "Flappy Bird", flappyGameDesc: "Fly through the pipes!",
+    // Math Challenge
+    mathGame: "Math Challenge", mathGameDesc: "Solve math problems fast",
+    // Runner
+    runnerGame: "Platform Runner", runnerGameDesc: "Jump, run, and collect coins",
+    // Shop
+    shopSkins: "Skins", shopPowerups: "Power-ups", shopThemes: "Themes", shopSpecial: "Special",
+    shopBuy: "Buy", shopEquip: "Equip", shopEquipped: "Equipped", shopOwned: "Owned",
+    shopPurchased: "Purchased!", shopNotEnough: "Not enough coins", shopAlreadyOwned: "Already owned",
+    // Rewards
+    dailyRewards: "Daily Login Rewards", spinWheel: "Spin the Wheel", winStreakBonus: "Win Streak Bonus",
+    spinBtn: "SPIN!", spinComeBack: "Come back tomorrow!", spinYouWon: "You won",
+    currentStreak: "Current Streak", nextBonusAt: "Next bonus at streak",
+    dailyRewardAvailable: "Daily Reward Available!", claimDailyBonus: "Claim your daily bonus", claim: "Claim",
+    // Profile & Settings
+    settings: "Settings", signOut: "Sign Out", soundOn: "Sound: ON", soundOff: "Sound: OFF",
+    heartStore: "Heart Store", buyHearts: "Buy hearts with coins", discount: "-20%",
+    heartsAlreadyFull: "Hearts already full.", notEnoughCoins: "Not enough coins. Need",
+    boughtHearts: "Bought", heart: "heart", hearts: "hearts",
+    // Auth
+    signIn: "Sign In", createAccount: "Create Account", login: "Login",
+    email: "Email", password: "Password", confirmPassword: "Confirm Password",
+    displayName: "Display Name", rememberMe: "Remember me", forgotPassword: "Forgot password?",
+    orContinueWith: "or continue with", playOffline: "Play Offline (Guest)",
+    offlineNote: "No account needed \u2014 progress won't be saved to cloud",
+    signInToContinue: "Sign in to continue",
+    fillAllFields: "Please fill in all fields.", passwordMinLength: "Password must be at least 6 characters.",
+    passwordsNoMatch: "Passwords do not match.",
+    // Leaderboard
+    gamesWon: "Games Won",
+    // Game over
+    gameOver: "Game Over!", youLost: "You lost! Try again", playAgainBtn: "Play Again",
+    // Connection
+    online: "Online", offline: "Offline", offlineBanner: "You are offline \u2014 limited features available",
+    // Loading
+    loadingAssets: "Loading assets\u2026", connecting: "Connecting\u2026", almostReady: "Almost ready\u2026", letsGo: "Let's go!",
+    signingIn: "Signing in...", restoringLogin: "Restoring login...", creatingAccount: "Creating account...",
+    signingInGoogle: "Signing in with Google...", signingInFacebook: "Signing in with Facebook...",
+    // Misc
+    neon: "Neon", rainbow: "Rainbow",
+    level1: "Level 1 (4 pairs)", level2: "Level 2 (8 pairs)", level3: "Level 3 (10 pairs)",
+    mathEasy: "Easy (+, -)", mathMedium: "Medium (+, -, x)", mathHard: "Hard (+, -, x, /)",
+    solveFast: "Solve as fast as you can!", startChallenge: "Start Challenge",
+    pressSpaceToFly: "Click or press Space to fly!", pressSpaceToJump: "Press Space or tap to jump!",
+    startRunning: "Start Running", distance: "Distance", best: "Best",
+    nextHeartIn: "Next \u2764\uFE0F in"
   },
   ar: {
-    appTitle: "\u062A\u0637\u0628\u064A\u0642 \u0627\u0644\u0627\u0633\u0626\u0644\u0629",
-    tagline: "\u0627\u0631\u0641\u0639 \u0645\u0633\u062A\u0648\u0649 \u0645\u0639\u0631\u0641\u062A\u0643",
-    stage: "\u0627\u0644\u0645\u0631\u062D\u0644\u0629",
-    questions: "\u0623\u0633\u0626\u0644\u0629",
-    health: "\u0627\u0644\u0635\u062D\u0629", home: "\u0627\u0644\u0631\u0626\u064A\u0633\u064A\u0629", back: "\u0631\u062C\u0648\u0639", time: "\u0627\u0644\u0648\u0642\u062A", timeUp: "\u0627\u0646\u062A\u0647\u0649 \u0627\u0644\u0648\u0642\u062A!",
-    quizGame: "\u0644\u0639\u0628\u0629 \u0627\u0644\u0623\u0633\u0626\u0644\u0629", quizGameDesc: "\u0627\u0644\u0639\u0628 \u0627\u0644\u0643\u0648\u064A\u0632 \u0627\u0644\u0623\u0635\u0644\u064A \u0628\u0640 100 \u0645\u0631\u062D\u0644\u0629",
-    tictactoeGame: "X \u0648 O", tictactoeGameDesc: "\u0627\u0644\u0639\u0628 1 \u0636\u062F 1 \u0623\u0648 1 \u0636\u062F \u0627\u0644\u0628\u0648\u062A",
-    puzzleGame: "\u0644\u0639\u0628\u0629 \u0627\u0644\u0628\u0627\u0632\u0644", puzzleGameDesc: "\u0631\u062A\u0628 \u0627\u0644\u0645\u0631\u0628\u0639\u0627\u062A \u0628\u0627\u0644\u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0635\u062D\u064A\u062D",
-    riddlesGame: "لعبة الألغاز", riddlesGameDesc: "ألغاز مع اختيارات A B C D", riddleCorrect: "إجابة صحيحة!", riddleWrong: "إجابة خاطئة!", riddleTimeUp: "انتهى الوقت!", riddleComplete: "أنهيت هذا المستوى من الألغاز!", riddleLevel: "مستوى الألغاز", levelComplete: "اكتمل المستوى!", chooseRiddleLevel: "اختر المستوى", matchingGame: "\u0645\u0637\u0627\u0628\u0642\u0629 \u0627\u0644\u0635\u0648\u0631", matchingGameDesc: "\u0627\u0628\u062D\u062B \u0639\u0646 \u0623\u0632\u0648\u0627\u062C \u0627\u0644\u0635\u0648\u0631", matches: "\u0627\u0644\u0645\u0637\u0627\u0628\u0642\u0627\u062A", newMatchGame: "\u0644\u0639\u0628\u0629 \u062C\u062F\u064A\u062F\u0629", matchingReady: "\u0627\u0642\u0644\u0628 \u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A \u0648\u0637\u0627\u0628\u0642 \u0627\u0644\u0635\u0648\u0631.", matchingPick: "\u0627\u062E\u062A\u0631 \u0628\u0637\u0627\u0642\u0629 \u0623\u062E\u0631\u0649.", matchingGood: "\u0645\u0637\u0627\u0628\u0642\u0629 \u0631\u0627\u0626\u0639\u0629!", matchingWrong: "\u062D\u0627\u0648\u0644 \u0645\u0631\u0629 \u0623\u062E\u0631\u0649.", matchingComplete: "\u0644\u0642\u062F \u0637\u0627\u0628\u0642\u062A \u0643\u0644 \u0627\u0644\u0635\u0648\u0631!",
-    oneVsOne: "1 \u0636\u062F 1", oneVsBot: "1 \u0636\u062F \u0627\u0644\u0628\u0648\u062A", resetGame: "\u0627\u0644\u062C\u0648\u0644\u0629 \u0627\u0644\u062A\u0627\u0644\u064A\u0629", newPuzzle: "\u0628\u0627\u0632\u0644 \u062C\u062F\u064A\u062F", moves: "\u0627\u0644\u062D\u0631\u0643\u0627\u062A",
-    chooseMode: "\u0627\u062E\u062A\u0631 \u0646\u0645\u0637 \u0627\u0644\u0644\u0639\u0628.", turn: "\u062F\u0648\u0631", botThinking: "\u0627\u0644\u0628\u0648\u062A \u064A\u0641\u0643\u0631...", draw: "\u062A\u0639\u0627\u062F\u0644!", wins: "\u0641\u0627\u0632!",
-    player1: "\u0627\u0644\u0644\u0627\u0639\u0628 1", player2: "\u0627\u0644\u0644\u0627\u0639\u0628 2", bot: "\u0627\u0644\u0628\u0648\u062A", result: "\u0627\u0644\u0646\u062A\u064A\u062C\u0629", round: "\u0627\u0644\u062C\u0648\u0644\u0629", newMatch: "\u0645\u0628\u0627\u0631\u0627\u0629 \u062C\u062F\u064A\u062F\u0629",
-    puzzleReady: "\u0631\u062A\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 \u0645\u0646 1 \u0625\u0644\u0649 8.", puzzleSolved: "\u062A\u0645 \u062D\u0644 \u0627\u0644\u0628\u0627\u0632\u0644!", healthEmpty: "\u0627\u0646\u062A\u0647\u062A \u0627\u0644\u0635\u062D\u0629! \u062A\u0645\u062A \u0625\u0639\u0627\u062F\u0629 \u0627\u0644\u0645\u0631\u062D\u0644\u0629.",
-    welcome: "\u0645\u0631\u062D\u0628\u064B\u0627 \u0628\u0643 \u0641\u064A \u062A\u0637\u0628\u064A\u0642 \u0627\u0644\u0627\u0633\u0626\u0644\u0629",
-    welcomeSubtitle: "\u0661\u0660\u0660 \u0645\u0631\u062D\u0644\u0629 \u00B7 \u0627\u0644\u0639\u0631\u0628\u064A\u0629 \u0648\u0627\u0644\u0625\u0646\u062C\u0644\u064A\u0632\u064A\u0629 \u00B7 \u0627\u062E\u062A\u0628\u0631 \u0645\u0639\u0644\u0648\u0645\u0627\u062A\u0643",
-    feature1: "\u062A\u0635\u0645\u064A\u0645 \u0632\u062C\u0627\u062C\u064A \u0639\u0635\u0631\u064A",
-    feature2: "\u0623\u0633\u0626\u0644\u0629 \u0645\u062A\u0639\u062F\u062F\u0629 \u0644\u0643\u0644 \u0645\u0631\u062D\u0644\u0629",
-    feature3: "\u062A\u063A\u0630\u064A\u0629 \u0631\u0627\u062C\u0639\u0629 \u0641\u0648\u0631\u064A\u0629 \u0645\u0639 \u0635\u0648\u062A",
-    play: "\u0627\u0628\u062F\u0623 \u0627\u0644\u0644\u0639\u0628",
-    progress: "\u0627\u0644\u062A\u0642\u062F\u0645",
-    question: "\u0633\u0624\u0627\u0644",
-    next: "\u0627\u0644\u062A\u0627\u0644\u064A",
-    tryAgain: "\u062D\u0627\u0648\u0644 \u0645\u0631\u0629 \u0623\u062E\u0631\u0649",
-    restart: "\u0625\u0639\u0627\u062F\u0629",
-    correct: "\u0625\u062C\u0627\u0628\u0629 \u0635\u062D\u064A\u062D\u0629!",
-    wrong: "\u0625\u062C\u0627\u0628\u0629 \u062E\u0627\u0637\u0626\u0629!",
-    correctAnswerIs: "\u0627\u0644\u0625\u062C\u0627\u0628\u0629 \u0627\u0644\u0635\u062D\u064A\u062D\u0629:",
-    stageComplete: "\u0627\u0643\u062A\u0645\u0644\u062A \u0627\u0644\u0645\u0631\u062D\u0644\u0629!",
-    stageCompleteMsg: "\u0644\u0642\u062F \u0623\u0643\u0645\u0644\u062A \u062C\u0645\u064A\u0639 \u0627\u0644\u0623\u0633\u0626\u0644\u0629 \u0641\u064A \u0647\u0630\u0647 \u0627\u0644\u0645\u0631\u062D\u0644\u0629.",
-    nextStage: "\u0627\u0644\u0645\u0631\u062D\u0644\u0629 \u0627\u0644\u062A\u0627\u0644\u064A\u0629",
-    congrats: "\u0644\u0642\u062F \u062A\u062E\u0637\u064A\u062A \u0643\u0644 \u0627\u0644\u0645\u0631\u0627\u062D\u0644 \u0627\u0644\u0640 \u0661\u0660\u0660!",
-    congratsSubtitle: "\u0623\u0646\u062A \u0628\u0637\u0644 \u0643\u0648\u064A\u0632 \u0627\u0644\u062D\u0642\u064A\u0642\u064A.",
-    playAgain: "\u0627\u0644\u0639\u0628 \u0645\u0631\u0629 \u0623\u062E\u0631\u0649",
-    noQuestion: "\u0644\u0627 \u064A\u0648\u062C\u062F \u0633\u0624\u0627\u0644 \u0645\u062A\u0627\u062D \u0644\u0647\u0630\u0647 \u0627\u0644\u0645\u0631\u062D\u0644\u0629."
+    appTitle: "GameZone Pro", tagline: "منصتك الاحترافية للألعاب",
+    stage: "المرحلة", questions: "أسئلة",
+    health: "الصحة", home: "الرئيسية", back: "رجوع", time: "الوقت", timeUp: "انتهى الوقت!",
+    quizGame: "لعبة الأسئلة", quizGameDesc: "العب الكويز الأصلي بـ 100 مرحلة",
+    tictactoeGame: "X و O", tictactoeGameDesc: "العب 1 ضد 1 أو 1 ضد البوت",
+    puzzleGame: "لعبة البازل", puzzleGameDesc: "رتب المربعات بالترتيب الصحيح",
+    snakeGame: "لعبة الثعبان", snakeGameDesc: "كُل الطعام وارتقِ بمستواك وغيّر المظهر",
+    riddlesGame: "لعبة الألغاز", riddlesGameDesc: "ألغاز مع اختيارات A B C D",
+    riddleCorrect: "إجابة صحيحة!", riddleWrong: "إجابة خاطئة!", riddleTimeUp: "انتهى الوقت!",
+    riddleComplete: "أنهيت هذا المستوى من الألغاز!", riddleLevel: "مستوى الألغاز",
+    levelComplete: "اكتمل المستوى!", chooseRiddleLevel: "اختر المستوى",
+    matchingGame: "مطابقة الصور", matchingGameDesc: "ابحث عن أزواج الصور",
+    matches: "المطابقات", newMatchGame: "لعبة جديدة",
+    matchingReady: "اقلب البطاقات وطابق الصور.", matchingPick: "اختر بطاقة أخرى.",
+    matchingGood: "مطابقة رائعة!", matchingWrong: "حاول مرة أخرى.",
+    matchingComplete: "لقد طابقت كل الصور!", matchingTimeUp: "انتهى الوقت! حاول مرة أخرى.",
+    difficulty: "الصعوبة", xp: "خبرة", coins: "عملات",
+    score: "النتيجة", level: "المستوى", skin: "المظهر",
+    start: "ابدأ", pause: "إيقاف", resume: "استمرار",
+    easy: "سهل", medium: "متوسط", hard: "صعب",
+    classic: "كلاسيكي", fire: "ناري", ice: "جليدي", gold: "ذهبي",
+    snakeReady: "اختر مستوى واضغط ابدأ.", snakeRunning: "استخدم الأسهم أو الأزرار للتحرك.",
+    snakePaused: "متوقف مؤقتاً", snakeGameOver: "انتهت اللعبة! اضغط ابدأ للعب مرة أخرى.",
+    oneVsOne: "1 ضد 1", oneVsBot: "1 ضد البوت", resetGame: "الجولة التالية",
+    newPuzzle: "بازل جديد", moves: "الحركات",
+    chooseMode: "اختر نمط اللعب.", turn: "دور", botThinking: "البوت يفكر...",
+    draw: "تعادل!", wins: "فاز!",
+    player1: "اللاعب 1", player2: "اللاعب 2", bot: "البوت",
+    result: "النتيجة", round: "الجولة", newMatch: "مباراة جديدة",
+    puzzleReady: "رتب الأرقام من 1 إلى 8.", puzzleSolved: "تم حل البازل!",
+    healthEmpty: "انتهت الصحة! تمت إعادة المرحلة.",
+    welcome: "مرحباً بك في GameZone Pro",
+    welcomeSubtitle: "+12 لعبة \u00B7 مكافآت \u00B7 لوحة المتصدرين \u00B7 تحديات يومية",
+    feature1: "تصميم زجاجي عصري", feature2: "أسئلة متعددة لكل مرحلة",
+    feature3: "تغذية راجعة فورية مع صوت",
+    play: "ابدأ اللعب", progress: "التقدم",
+    question: "سؤال", next: "التالي", tryAgain: "حاول مرة أخرى", restart: "إعادة",
+    correct: "إجابة صحيحة!", wrong: "إجابة خاطئة!",
+    correctAnswerIs: "الإجابة الصحيحة:",
+    stageComplete: "اكتملت المرحلة!",
+    stageCompleteMsg: "لقد أكملت جميع الأسئلة في هذه المرحلة.",
+    nextStage: "المرحلة التالية",
+    congrats: "لقد تخطيت كل المراحل الـ ١٠٠!",
+    congratsSubtitle: "أنت بطل كويز الحقيقي.",
+    playAgain: "العب مرة أخرى",
+    noQuestion: "لا يوجد سؤال متاح لهذه المرحلة.",
+    // Sidebar & navigation
+    shop: "المتجر", rewards: "المكافآت", leaderboard: "المتصدرين", achievements: "الإنجازات",
+    // Flappy Bird
+    flappyGame: "فلابي بيرد", flappyGameDesc: "طِر بين الأنابيب!",
+    // Math Challenge
+    mathGame: "تحدي الرياضيات", mathGameDesc: "حل مسائل الرياضيات بسرعة",
+    // Runner
+    runnerGame: "عداء المنصات", runnerGameDesc: "اقفز واركض واجمع العملات",
+    // Shop
+    shopSkins: "المظاهر", shopPowerups: "التعزيزات", shopThemes: "السمات", shopSpecial: "مميز",
+    shopBuy: "شراء", shopEquip: "تجهيز", shopEquipped: "مُجهَّز", shopOwned: "مملوك",
+    shopPurchased: "تم الشراء!", shopNotEnough: "عملات غير كافية", shopAlreadyOwned: "مملوك بالفعل",
+    // Rewards
+    dailyRewards: "مكافآت تسجيل الدخول اليومية", spinWheel: "أدِر العجلة", winStreakBonus: "مكافأة سلسلة الانتصارات",
+    spinBtn: "أدِر!", spinComeBack: "عُد غداً!", spinYouWon: "ربحت",
+    currentStreak: "السلسلة الحالية", nextBonusAt: "المكافأة التالية عند سلسلة",
+    dailyRewardAvailable: "مكافأة يومية متاحة!", claimDailyBonus: "احصل على مكافأتك اليومية", claim: "احصل",
+    // Profile & Settings
+    settings: "الإعدادات", signOut: "تسجيل الخروج", soundOn: "الصوت: مفعّل", soundOff: "الصوت: مُعطّل",
+    heartStore: "متجر القلوب", buyHearts: "اشترِ قلوباً بالعملات", discount: "-20%",
+    heartsAlreadyFull: "القلوب ممتلئة بالفعل.", notEnoughCoins: "عملات غير كافية. تحتاج",
+    boughtHearts: "اشتريت", heart: "قلب", hearts: "قلوب",
+    // Auth
+    signIn: "تسجيل الدخول", createAccount: "إنشاء حساب", login: "دخول",
+    email: "البريد الإلكتروني", password: "كلمة المرور", confirmPassword: "تأكيد كلمة المرور",
+    displayName: "الاسم المعروض", rememberMe: "تذكرني", forgotPassword: "نسيت كلمة المرور؟",
+    orContinueWith: "أو تابع عبر", playOffline: "العب بدون اتصال (ضيف)",
+    offlineNote: "لا حاجة لحساب — لن يُحفظ التقدم في السحابة",
+    signInToContinue: "سجّل الدخول للمتابعة",
+    fillAllFields: "يرجى ملء جميع الحقول.", passwordMinLength: "كلمة المرور يجب أن تكون 6 أحرف على الأقل.",
+    passwordsNoMatch: "كلمتا المرور غير متطابقتين.",
+    // Leaderboard
+    gamesWon: "الألعاب المربوحة",
+    // Game over
+    gameOver: "انتهت اللعبة!", youLost: "لقد خسرت، حاول مرة أخرى", playAgainBtn: "العب مرة أخرى",
+    // Connection
+    online: "متصل", offline: "غير متصل", offlineBanner: "أنت غير متصل — الميزات محدودة",
+    // Loading
+    loadingAssets: "جارٍ تحميل الملفات\u2026", connecting: "جارٍ الاتصال\u2026", almostReady: "جاهز تقريباً\u2026", letsGo: "!هيا بنا",
+    signingIn: "جارٍ تسجيل الدخول...", restoringLogin: "جارٍ استعادة الجلسة...", creatingAccount: "جارٍ إنشاء الحساب...",
+    signingInGoogle: "جارٍ تسجيل الدخول عبر Google...", signingInFacebook: "جارٍ تسجيل الدخول عبر Facebook...",
+    // Misc
+    neon: "نيون", rainbow: "قوس قزح",
+    level1: "المستوى 1 (4 أزواج)", level2: "المستوى 2 (8 أزواج)", level3: "المستوى 3 (10 أزواج)",
+    mathEasy: "سهل (+، -)", mathMedium: "متوسط (+، -، ×)", mathHard: "صعب (+، -، ×، ÷)",
+    solveFast: "حل بأسرع ما يمكن!", startChallenge: "ابدأ التحدي",
+    pressSpaceToFly: "انقر أو اضغط مسافة للطيران!", pressSpaceToJump: "اضغط مسافة أو انقر للقفز!",
+    startRunning: "ابدأ الجري", distance: "المسافة", best: "الأفضل",
+    nextHeartIn: "القلب التالي بعد"
   }
 };
 
@@ -238,6 +348,186 @@ function applyLang() {
   setupRiddleLevels();
   if (riddles.current) riddles.current = buildRiddle(riddles.index);
   renderRiddleQuestion();
+  applyLangToShop();
+  applyLangToRewards();
+  applyLangToSettings();
+  applyLangToAuth();
+  applyLangToGameScreens();
+}
+
+function applyLangToShop() {
+  const dict = i18n[state.lang];
+  document.querySelectorAll('.shop-tab').forEach(tab => {
+    const cat = tab.dataset.shopCat;
+    if (cat === 'skins') tab.textContent = dict.shopSkins;
+    if (cat === 'powerups') tab.textContent = dict.shopPowerups;
+    if (cat === 'themes') tab.textContent = dict.shopThemes;
+    if (cat === 'special') tab.textContent = dict.shopSpecial;
+  });
+}
+
+function applyLangToRewards() {
+  const dict = i18n[state.lang];
+  document.querySelectorAll('#rewards-screen h4').forEach(h4 => {
+    const text = h4.textContent;
+    if (text.includes('Daily') || text.includes('يومي')) h4.innerHTML = '&#128197; ' + dict.dailyRewards;
+    if (text.includes('Spin') || text.includes('العجلة')) h4.innerHTML = '&#127922; ' + dict.spinWheel;
+    if (text.includes('Streak') || text.includes('سلسلة')) h4.innerHTML = '&#128293; ' + dict.winStreakBonus;
+  });
+  const spinBtn = document.getElementById('spin-btn');
+  if (spinBtn) {
+    if (window.Rewards && !Rewards.canSpin()) {
+      spinBtn.textContent = dict.spinComeBack;
+    } else {
+      spinBtn.textContent = dict.spinBtn;
+    }
+  }
+  const currentStreakEl = document.querySelector('#streak-info p:first-child');
+  const nextBonusEl = document.querySelector('#streak-info p:nth-child(2)');
+  if (currentStreakEl && window.Rewards) {
+    const val = document.getElementById('current-streak');
+    currentStreakEl.innerHTML = dict.currentStreak + ': <strong id="current-streak">' + (val ? val.textContent : Rewards.getStreak()) + '</strong>';
+  }
+  if (nextBonusEl && window.Rewards) {
+    const val = document.getElementById('next-streak-bonus');
+    const next = Rewards.getNextStreakBonus();
+    nextBonusEl.innerHTML = dict.nextBonusAt + ' <strong id="next-streak-bonus">' + (val ? val.textContent : (next ? next.streak : 3)) + '</strong>';
+  }
+  const dailyBanner = document.getElementById('daily-reward-banner');
+  if (dailyBanner) {
+    const strong = dailyBanner.querySelector('strong');
+    const small = dailyBanner.querySelector('small');
+    const claimBtn = document.getElementById('claim-daily-btn');
+    if (strong) strong.textContent = dict.dailyRewardAvailable;
+    if (small) small.textContent = dict.claimDailyBonus;
+    if (claimBtn) claimBtn.textContent = dict.claim;
+  }
+}
+
+function applyLangToSettings() {
+  const dict = i18n[state.lang];
+  const settingsTitle = document.querySelector('.settings-title');
+  if (settingsTitle) settingsTitle.innerHTML = '&#9881; ' + dict.settings;
+  const volumeBtn = document.getElementById('volume-toggle');
+  if (volumeBtn) {
+    volumeBtn.textContent = state.soundOff ? ('\uD83D\uDD07 ' + dict.soundOff) : ('\uD83D\uDD0A ' + dict.soundOn);
+  }
+  const logoutBtn = document.getElementById('logout-btn');
+  if (logoutBtn) logoutBtn.innerHTML = '&#128682; ' + dict.signOut;
+  const heartStoreHead = document.querySelector('.health-store .store-head');
+  if (heartStoreHead) {
+    const strong = heartStoreHead.querySelector('strong');
+    const small = heartStoreHead.querySelector('small');
+    if (strong) strong.innerHTML = '&#10084;&#65039; ' + dict.heartStore;
+    if (small) small.textContent = dict.buyHearts;
+  }
+}
+
+function applyLangToAuth() {
+  const dict = i18n[state.lang];
+  const authSubtitle = document.getElementById('auth-subtitle');
+  if (authSubtitle) authSubtitle.textContent = dict.signInToContinue;
+  const tabLogin = document.getElementById('tab-login');
+  const tabRegister = document.getElementById('tab-register');
+  if (tabLogin) tabLogin.textContent = dict.login;
+  if (tabRegister) tabRegister.textContent = dict.createAccount;
+  document.querySelectorAll('.field-label').forEach(label => {
+    const text = label.textContent.trim();
+    if (text === 'Email' || text === dict.email) label.textContent = dict.email;
+    if (text === 'Password' || text === dict.password) label.textContent = dict.password;
+    if (text === 'Confirm Password' || text === dict.confirmPassword) label.textContent = dict.confirmPassword;
+    if (text === 'Display Name' || text === dict.displayName) label.textContent = dict.displayName;
+  });
+  const loginBtn = document.getElementById('login-btn');
+  if (loginBtn) {
+    const label = loginBtn.querySelector('.btn-label');
+    if (label) label.textContent = dict.signIn;
+  }
+  const regBtn = document.getElementById('reg-btn');
+  if (regBtn) {
+    const label = regBtn.querySelector('.btn-label');
+    if (label) label.textContent = dict.createAccount;
+  }
+  const forgotBtn = document.getElementById('forgot-btn');
+  if (forgotBtn) forgotBtn.textContent = dict.forgotPassword;
+  const rememberLabel = document.querySelector('.check-label');
+  if (rememberLabel) {
+    const checkbox = rememberLabel.querySelector('input');
+    const custom = rememberLabel.querySelector('.check-custom');
+    if (checkbox && custom) {
+      rememberLabel.innerHTML = '';
+      rememberLabel.appendChild(checkbox);
+      rememberLabel.appendChild(custom);
+      rememberLabel.appendChild(document.createTextNode(' ' + dict.rememberMe));
+    }
+  }
+  const socialDivider = document.querySelector('.social-divider span');
+  if (socialDivider) socialDivider.textContent = dict.orContinueWith;
+  const offlineBtn = document.getElementById('offline-play-btn');
+  if (offlineBtn) offlineBtn.innerHTML = '&#127918; ' + dict.playOffline;
+  const offlineNote = document.querySelector('.offline-note');
+  if (offlineNote) offlineNote.textContent = dict.offlineNote;
+  const offlineBannerText = document.getElementById('offline-banner-text');
+  if (offlineBannerText) offlineBannerText.textContent = dict.offlineBanner;
+}
+
+function applyLangToGameScreens() {
+  const dict = i18n[state.lang];
+  // Flappy
+  const flappyStatus = document.getElementById('flappy-status');
+  if (flappyStatus && flappyStatus.textContent.includes('Click')) flappyStatus.textContent = dict.pressSpaceToFly;
+  else if (flappyStatus && state.lang === 'ar') flappyStatus.textContent = dict.pressSpaceToFly;
+  const flappyStart = document.getElementById('flappy-start-btn');
+  if (flappyStart) flappyStart.textContent = dict.start;
+  // Math
+  const mathStatus = document.getElementById('math-status');
+  if (mathStatus && (mathStatus.textContent.includes('Solve') || mathStatus.textContent.includes('حل'))) mathStatus.textContent = dict.solveFast;
+  const mathStart = document.getElementById('math-start-btn');
+  if (mathStart && !mathStart.disabled) mathStart.textContent = dict.startChallenge;
+  const mathDiff = document.getElementById('math-difficulty');
+  if (mathDiff) {
+    const opts = mathDiff.options;
+    if (opts[0]) opts[0].textContent = dict.mathEasy;
+    if (opts[1]) opts[1].textContent = dict.mathMedium;
+    if (opts[2]) opts[2].textContent = dict.mathHard;
+  }
+  // Runner
+  const runnerStatus = document.getElementById('runner-status');
+  if (runnerStatus && (runnerStatus.textContent.includes('Space') || runnerStatus.textContent.includes('مسافة'))) runnerStatus.textContent = dict.pressSpaceToJump;
+  const runnerStart = document.getElementById('runner-start-btn');
+  if (runnerStart) runnerStart.textContent = dict.startRunning;
+  // Matching levels
+  const matchLevel = document.getElementById('matching-level');
+  if (matchLevel) {
+    const opts = matchLevel.options;
+    if (opts[0]) opts[0].textContent = dict.level1;
+    if (opts[1]) opts[1].textContent = dict.level2;
+    if (opts[2]) opts[2].textContent = dict.level3;
+  }
+  // Snake extra skins
+  const snakeSkinSel = document.getElementById('snake-skin');
+  if (snakeSkinSel) {
+    Array.from(snakeSkinSel.options).forEach(opt => {
+      if (opt.value === 'neon') opt.textContent = dict.neon;
+      if (opt.value === 'rainbow') opt.textContent = dict.rainbow;
+    });
+  }
+  // Leaderboard tabs
+  document.querySelectorAll('.lb-tab').forEach(tab => {
+    const lb = tab.dataset.lb;
+    if (lb === 'xp') tab.textContent = dict.xp;
+    if (lb === 'coins') tab.textContent = dict.coins;
+    if (lb === 'games') tab.textContent = dict.gamesWon;
+  });
+  // Game over overlays
+  document.querySelectorAll('.gameover-content h2').forEach(h2 => {
+    h2.textContent = dict.gameOver;
+  });
+  document.querySelectorAll('.gameover-content .btn-primary').forEach(btn => {
+    if (btn.id !== 'snake-replay-btn') btn.textContent = dict.playAgainBtn;
+  });
+  const snakeReplayBtn = document.getElementById('snake-replay-btn');
+  if (snakeReplayBtn) snakeReplayBtn.textContent = dict.playAgainBtn;
 }
 
 function toggleLang() {
@@ -252,13 +542,18 @@ function showScreen(which) {
   if (which !== "snake") stopSnake();
   if (which !== "matching") stopMatchingTimer();
   if (which !== "riddles") stopRiddleTimer();
-  [el.startScreen, el.quizScreen, el.finishScreen, el.stageComplete, el.tictactoeScreen, el.puzzleScreen, el.snakeScreen, el.matchingScreen, el.riddlesScreen].forEach(n => {
-    if (n) n.classList.remove("visible");
-  });
+  document.querySelectorAll('.screen').forEach(n => n.classList.remove("visible"));
   const map = {
     start: el.startScreen, quiz: el.quizScreen,
     tictactoe: el.tictactoeScreen, puzzle: el.puzzleScreen, snake: el.snakeScreen, matching: el.matchingScreen, riddles: el.riddlesScreen,
     finish: el.finishScreen, stageComplete: el.stageComplete,
+    shop: document.getElementById('shop-screen'),
+    rewards: document.getElementById('rewards-screen'),
+    leaderboard: document.getElementById('leaderboard-screen'),
+    achievements: document.getElementById('achievements-screen'),
+    flappy: document.getElementById('flappy-screen'),
+    math: document.getElementById('math-screen'),
+    runner: document.getElementById('runner-screen'),
   };
   if (map[which]) map[which].classList.add("visible");
 }
@@ -1434,24 +1729,6 @@ function handleNavigation(section) {
   }
 }
 
-/* ── Shop Screen ── */
-function renderShopScreen() {
-  const grid = document.getElementById('shop-grid');
-  const coinDisplay = document.getElementById('shop-coin-display');
-  if (coinDisplay) coinDisplay.textContent = String(state.playerCoins);
-  if (window.Shop) Shop.renderShop(grid, 'skins', state.playerCoins);
-
-  // Tab handling
-  document.querySelectorAll('.shop-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.shop-tab').forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      Shop.renderShop(grid, tab.dataset.shopCat, state.playerCoins);
-      attachShopEvents();
-    });
-  });
-  attachShopEvents();
-}
 
 function attachShopEvents() {
   document.querySelectorAll('.buy-btn').forEach(btn => {
@@ -1498,23 +1775,135 @@ function renderRewardsScreen() {
 
   // Spin button
   const spinBtn = document.getElementById('spin-btn');
+  const dict = i18n[state.lang];
   if (spinBtn) {
     spinBtn.disabled = !Rewards.canSpin();
-    spinBtn.textContent = Rewards.canSpin() ? 'SPIN!' : 'Come back tomorrow!';
+    spinBtn.textContent = Rewards.canSpin() ? dict.spinBtn : dict.spinComeBack;
     spinBtn.onclick = () => {
       const result = Rewards.spin();
       if (result) {
-        if (window.SoundManager) SoundManager.play('spin');
-        const prize = result.prize;
-        addPlayerReward(prize.xp, prize.coins);
-        const spinResult = document.getElementById('spin-result');
-        if (spinResult) spinResult.textContent = `You won: ${prize.label}!`;
         spinBtn.disabled = true;
-        spinBtn.textContent = 'Come back tomorrow!';
-        Toast.success(`Spin reward: ${prize.label}`);
+        if (window.SoundManager) SoundManager.play('spin');
+        animateSpinWheel(spinCanvas, result.index, () => {
+          const prize = result.prize;
+          addPlayerReward(prize.xp, prize.coins);
+          const spinResult = document.getElementById('spin-result');
+          if (spinResult) spinResult.textContent = `${dict.spinYouWon}: ${prize.label}!`;
+          spinBtn.textContent = dict.spinComeBack;
+          Toast.success(`${dict.spinYouWon}: ${prize.label}`);
+        });
       }
     };
   }
+  applyLangToRewards();
+}
+
+/* ── Render Shop with i18n ── */
+function renderShopScreen() {
+  const grid = document.getElementById('shop-grid');
+  const coinDisplay = document.getElementById('shop-coin-display');
+  if (coinDisplay) coinDisplay.textContent = String(state.playerCoins);
+  if (window.Shop) Shop.renderShop(grid, 'skins', state.playerCoins);
+
+  // Tab handling — remove old listeners by cloning
+  document.querySelectorAll('.shop-tab').forEach(tab => {
+    const newTab = tab.cloneNode(true);
+    tab.parentNode.replaceChild(newTab, tab);
+  });
+  document.querySelectorAll('.shop-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.shop-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      Shop.renderShop(grid, tab.dataset.shopCat, state.playerCoins);
+      attachShopEvents();
+    });
+  });
+  attachShopEvents();
+  applyLangToShop();
+}
+
+/* ── Spin Wheel Animation ── */
+function animateSpinWheel(canvas, targetIndex, onComplete) {
+  if (!canvas || !window.Rewards) { if (onComplete) onComplete(); return; }
+  const totalSlices = Rewards.SPIN_PRIZES.length;
+  const sliceAngle = (2 * Math.PI) / totalSlices;
+  const targetAngle = (2 * Math.PI) - (targetIndex * sliceAngle + sliceAngle / 2);
+  const totalRotation = (Math.PI * 2) * (5 + Math.random() * 3) + targetAngle;
+  const duration = 4000;
+  const startTime = performance.now();
+  let currentAngle = 0;
+
+  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+  function frame(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    currentAngle = totalRotation * easeOutCubic(progress);
+
+    drawRotatedWheel(canvas, currentAngle);
+
+    if (progress < 1) {
+      requestAnimationFrame(frame);
+    } else {
+      if (onComplete) onComplete();
+    }
+  }
+  requestAnimationFrame(frame);
+}
+
+function drawRotatedWheel(canvas, angle) {
+  if (!canvas || !window.Rewards) return;
+  const ctx = canvas.getContext('2d');
+  const cx = canvas.width / 2;
+  const cy = canvas.height / 2;
+  const r = Math.min(cx, cy) - 10;
+  const prizes = Rewards.SPIN_PRIZES;
+  const sliceAngle = (2 * Math.PI) / prizes.length;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.rotate(angle);
+  ctx.translate(-cx, -cy);
+
+  prizes.forEach((prize, i) => {
+    const startA = i * sliceAngle;
+    const endA = startA + sliceAngle;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.arc(cx, cy, r, startA, endA);
+    ctx.fillStyle = prize.color;
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(255,255,255,0.3)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(startA + sliceAngle / 2);
+    ctx.textAlign = 'right';
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 11px sans-serif';
+    ctx.fillText(prize.label, r - 15, 4);
+    ctx.restore();
+  });
+
+  // Center
+  ctx.beginPath();
+  ctx.arc(cx, cy, 20, 0, Math.PI * 2);
+  ctx.fillStyle = '#1a1a2e';
+  ctx.fill();
+  ctx.strokeStyle = '#fff';
+  ctx.lineWidth = 3;
+  ctx.stroke();
+  ctx.restore();
+
+  // Arrow (fixed, doesn't rotate)
+  ctx.beginPath();
+  ctx.moveTo(cx + r + 5, cy);
+  ctx.lineTo(cx + r - 15, cy - 10);
+  ctx.lineTo(cx + r - 15, cy + 10);
+  ctx.fillStyle = '#ff5c7a';
+  ctx.fill();
 }
 
 /* ── Leaderboard ── */
@@ -1770,11 +2159,15 @@ state.soundOff = localStorage.getItem("soundOff") === "1";
 document.addEventListener("DOMContentLoaded", () => {
   const btn = document.getElementById("volume-toggle");
   if (btn) {
-    btn.textContent = state.soundOff ? "\uD83D\uDD07 Sound: OFF" : "\uD83D\uDD0A Sound: ON";
+    function updateSoundBtnText() {
+      const dict = i18n[state.lang];
+      btn.textContent = state.soundOff ? ("\uD83D\uDD07 " + dict.soundOff) : ("\uD83D\uDD0A " + dict.soundOn);
+    }
+    updateSoundBtnText();
     btn.addEventListener("click", () => {
       state.soundOff = !state.soundOff;
       localStorage.setItem("soundOff", state.soundOff ? "1" : "0");
-      btn.textContent = state.soundOff ? "\uD83D\uDD07 Sound: OFF" : "\uD83D\uDD0A Sound: ON";
+      updateSoundBtnText();
       if (window.SoundManager) SoundManager.toggleMute();
     });
   }
