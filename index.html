@@ -9,6 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GameZone Pro</title>
     <link rel="stylesheet" href="style.css" />
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   </head>
   <body>
     <div class="bg-orbs" aria-hidden="true">
@@ -163,10 +167,10 @@
         </nav>
         <div class="sidebar-footer">
           <div class="sidebar-stats glass-subtle">
-            <div class="stat-row"><span>&#9734; Level</span><strong id="sidebar-level">0</strong></div>
-            <div class="stat-row"><span>&#128176; Coins</span><strong id="sidebar-coins">0</strong></div>
-            <div class="stat-row"><span>&#9889; XP</span><strong id="sidebar-xp">0</strong></div>
-            <div class="stat-row"><span>&#128293; Streak</span><strong id="sidebar-streak">0</strong></div>
+            <div class="stat-row"><span>&#9734; <span data-i18n="level">Level</span></span><strong id="sidebar-level">0</strong></div>
+            <div class="stat-row"><span>&#128176; <span data-i18n="coins">Coins</span></span><strong id="sidebar-coins">0</strong></div>
+            <div class="stat-row"><span>&#9889; <span data-i18n="xp">XP</span></span><strong id="sidebar-xp">0</strong></div>
+            <div class="stat-row"><span>&#128293; <span data-i18n="currentStreak">Streak</span></span><strong id="sidebar-streak">0</strong></div>
           </div>
         </div>
       </aside>
@@ -229,22 +233,22 @@
                   </div>
                 </div>
                 <hr class="dropdown-sep" />
-                <p class="settings-title">&#9881; Settings</p>
-                <button class="dropdown-item" id="volume-toggle">&#128266; Sound: ON</button>
+                <p class="settings-title">&#9881; <span data-i18n="settings">Settings</span></p>
+                <button class="dropdown-item" id="volume-toggle">&#128266; <span data-i18n="soundOn">Sound: ON</span></button>
                 <div class="health-store profile-store">
                   <div class="store-head">
                     <div>
-                      <strong>&#10084;&#65039; Heart Store</strong>
-                      <small>Buy hearts with coins</small>
+                      <strong>&#10084;&#65039; <span data-i18n="heartStore">Heart Store</span></strong>
+                      <small data-i18n="buyHearts">Buy hearts with coins</small>
                     </div>
-                    <span class="discount-badge">-20%</span>
+                    <span class="discount-badge" data-i18n="discount">-20%</span>
                   </div>
                   <button class="store-buy-btn" onclick="buyHearts(1)"><span>+1 &#10084;&#65039;</span><strong>240 coins</strong></button>
                   <button class="store-buy-btn" onclick="buyHearts(2)"><span>+2 &#10084;&#65039;</span><strong>800 coins</strong></button>
                   <button class="store-buy-btn" onclick="buyHearts(3)"><span>+3 &#10084;&#65039;</span><strong>1920 coins</strong></button>
                   <p id="store-message" class="store-message"></p>
                 </div>
-                <button class="dropdown-item" id="logout-btn">&#128682; Sign Out</button>
+                <button class="dropdown-item" id="logout-btn">&#128682; <span data-i18n="signOut">Sign Out</span></button>
               </div>
             </div>
           </div>
@@ -260,10 +264,10 @@
               <div class="daily-reward-banner glass-subtle" id="daily-reward-banner">
                 <span class="reward-icon">&#127873;</span>
                 <div class="reward-info">
-                  <strong>Daily Reward Available!</strong>
-                  <small>Claim your daily bonus</small>
+                  <strong data-i18n="dailyRewardAvailable">Daily Reward Available!</strong>
+                  <small data-i18n="claimDailyBonus">Claim your daily bonus</small>
                 </div>
-                <button class="btn btn-sm btn-accent" id="claim-daily-btn">Claim</button>
+                <button class="btn btn-sm btn-accent" id="claim-daily-btn" data-i18n="claim">Claim</button>
               </div>
               <div class="game-menu">
                 <button id="play-btn" class="game-card-btn glass-subtle">
@@ -605,10 +609,10 @@
               <span class="shop-coins"><img src="assets/coin.png" alt="" class="coin-icon" /> <strong id="shop-coin-display">0</strong></span>
             </div>
             <div class="shop-tabs">
-              <button class="shop-tab active" data-shop-cat="skins">Skins</button>
-              <button class="shop-tab" data-shop-cat="powerups">Power-ups</button>
-              <button class="shop-tab" data-shop-cat="themes">Themes</button>
-              <button class="shop-tab" data-shop-cat="special">Special</button>
+              <button class="shop-tab active" data-shop-cat="skins" data-i18n="shopSkins">Skins</button>
+              <button class="shop-tab" data-shop-cat="powerups" data-i18n="shopPowerups">Power-ups</button>
+              <button class="shop-tab" data-shop-cat="themes" data-i18n="shopThemes">Themes</button>
+              <button class="shop-tab" data-shop-cat="special" data-i18n="shopSpecial">Special</button>
             </div>
             <div class="shop-grid" id="shop-grid"></div>
           </section>
@@ -621,22 +625,22 @@
             </div>
             <div class="rewards-sections">
               <div class="reward-section glass-subtle">
-                <h4>&#128197; Daily Login Rewards</h4>
+                <h4>&#128197; <span data-i18n="dailyRewards">Daily Login Rewards</span></h4>
                 <div class="daily-rewards-grid" id="daily-rewards-grid"></div>
               </div>
               <div class="reward-section glass-subtle">
-                <h4>&#127922; Spin the Wheel</h4>
+                <h4>&#127922; <span data-i18n="spinWheel">Spin the Wheel</span></h4>
                 <div class="spin-wheel-container">
                   <canvas id="spin-wheel-canvas" width="300" height="300"></canvas>
-                  <button id="spin-btn" class="btn btn-primary glow">SPIN!</button>
+                  <button id="spin-btn" class="btn btn-primary glow" data-i18n="spinBtn">SPIN!</button>
                   <p id="spin-result" class="spin-result"></p>
                 </div>
               </div>
               <div class="reward-section glass-subtle">
-                <h4>&#128293; Win Streak Bonus</h4>
+                <h4>&#128293; <span data-i18n="winStreakBonus">Win Streak Bonus</span></h4>
                 <div class="streak-info" id="streak-info">
-                  <p>Current Streak: <strong id="current-streak">0</strong></p>
-                  <p>Next bonus at streak <strong id="next-streak-bonus">3</strong></p>
+                  <p><span data-i18n="currentStreak">Current Streak</span>: <strong id="current-streak">0</strong></p>
+                  <p><span data-i18n="nextBonusAt">Next bonus at streak</span> <strong id="next-streak-bonus">3</strong></p>
                   <div class="streak-progress"><div class="streak-fill" id="streak-fill"></div></div>
                 </div>
               </div>
@@ -650,9 +654,9 @@
               <h3 data-i18n="leaderboard">Leaderboard</h3>
             </div>
             <div class="leaderboard-tabs">
-              <button class="lb-tab active" data-lb="xp">XP</button>
-              <button class="lb-tab" data-lb="coins">Coins</button>
-              <button class="lb-tab" data-lb="games">Games Won</button>
+              <button class="lb-tab active" data-lb="xp" data-i18n="xp">XP</button>
+              <button class="lb-tab" data-lb="coins" data-i18n="coins">Coins</button>
+              <button class="lb-tab" data-lb="games" data-i18n="gamesWon">Games Won</button>
             </div>
             <div class="leaderboard-list" id="leaderboard-list"></div>
           </section>
